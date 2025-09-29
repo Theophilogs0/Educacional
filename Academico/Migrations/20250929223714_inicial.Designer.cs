@@ -3,6 +3,7 @@ using Academico.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Academico.Migrations
 {
     [DbContext(typeof(EducacionalContext))]
-    partial class EducacionalContextModelSnapshot : ModelSnapshot
+    [Migration("20250929223714_inicial")]
+    partial class inicial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,28 +23,6 @@ namespace Academico.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Academico.Models.Departamento", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<long>("InstituicaoId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("InstituicaoId");
-
-                    b.ToTable("departamentos");
-                });
 
             modelBuilder.Entity("Academico.Models.Instituicao", b =>
                 {
@@ -62,17 +43,6 @@ namespace Academico.Migrations
                     b.HasKey("InstituicaoID");
 
                     b.ToTable("Instituicoes");
-                });
-
-            modelBuilder.Entity("Academico.Models.Departamento", b =>
-                {
-                    b.HasOne("Academico.Models.Instituicao", "Instituicao")
-                        .WithMany()
-                        .HasForeignKey("InstituicaoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Instituicao");
                 });
 #pragma warning restore 612, 618
         }
