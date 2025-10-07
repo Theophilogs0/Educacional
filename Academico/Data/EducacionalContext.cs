@@ -10,6 +10,8 @@ namespace Academico.Data
         }
 
         public DbSet<Instituicao> Instituicoes { get; set; }
-        public DbSet<Departamento> departamentos { get; set; }
+        public DbSet<Departamento> Departamentos { get; set; }
+        public DbSet<Departamento> Alunos { get; set; }
+        public DbSet<Academico.Models.Curso> Curso { get; set; } = default!;
     }
 }

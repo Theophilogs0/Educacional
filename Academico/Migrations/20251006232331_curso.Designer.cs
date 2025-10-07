@@ -3,6 +3,7 @@ using Academico.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Academico.Migrations
 {
     [DbContext(typeof(EducacionalContext))]
-    partial class EducacionalContextModelSnapshot : ModelSnapshot
+    [Migration("20251006232331_curso")]
+    partial class curso
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,7 +69,7 @@ namespace Academico.Migrations
 
                     b.HasIndex("InstituicaoId");
 
-                    b.ToTable("Departamento");
+                    b.ToTable("Departamentos");
                 });
 
             modelBuilder.Entity("Academico.Models.Instituicao", b =>

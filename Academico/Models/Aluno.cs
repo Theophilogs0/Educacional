@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Academico.Models
 {
@@ -10,7 +11,10 @@ namespace Academico.Models
         [DisplayName("e-mail")]
         public string Email { get; set; }
 
+        [RegularExpression(@"^\d{5}-\d{3}$", ErrorMessage = "O cep deve estar no formato xxxxx-xxx")]
+
         [DisplayName("CEP")]
-        public long Cep { get; set; }
+        public string Cep { get; set; }
     }
 }
+//oi
